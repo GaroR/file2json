@@ -1,0 +1,59 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>File2Json Test Page</title>
+    <script src="/Users/Garofalo/Projetos/Publicos/file2json/example/js/file2json.js"></script>
+</head>
+
+<body>
+    <h1>File2Json Test Page</h1>
+    <input type="file" name="fileToRead" id="fileToRead">
+
+    <h3>Converted Object</h3>
+    <span id="convertedObject"></span>
+</body>
+
+<script>
+    var fileToRead = document.getElementById("fileToRead");
+    fileToRead.addEventListener("change", convert, false);
+
+    var dictionary = {
+        lineSize: 64,
+        fields: [
+            {
+                name: "nome",
+                position: 0,
+                size: 40
+            },
+            {
+                name: "id",
+                position: 41,
+                size: 5
+            },
+            {
+                name: "data",
+                position: 46,
+                size: 8
+            },
+            {
+                name: "code",
+                position: 54,
+                size: 11
+            }
+        ]
+    };
+
+    function convert(event) {
+        file2json.convert(event.target.files, dictionary)
+            .then(function (returnValue) {
+                var convertedObject = document.getElementById("convertedObject");
+                convertedObject.innerText = JSON.stringify(returnValue);
+            });
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "file2json",
+  "version": "1.0.0",
+  "description": "Biblioteca javascript criada para ler arquivos de texto genericos e converte-los para json",
+  "main": "src/file2json.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onilink128/file2json.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/onilink128/file2json/issues"
+  },
+  "homepage": "https://github.com/onilink128/file2json#readme"
+}
