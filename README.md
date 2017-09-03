@@ -35,7 +35,7 @@ var dictionary = {
     lineSize: 64,
     lineDefinition: [
         {
-            name: "nome",
+            name: "name",
             position: 0,
             size: 40
         },
@@ -77,37 +77,37 @@ file2json.convert(file, dictionary)
 ```javascript
 [
     {
-        "nome": "john from ",
+        "name": "john from ",
         "id": "00011",
         "data": "98804221",
         "code": "1111111111"
     },
     {
-        "nome": "wood toy ",
+        "name": "wood toy ",
         "id": "00021",
         "data": "98804221",
         "code": "1111111111"
     },
     {
-        "nome": "ariel bonilla ",
+        "name": "ariel bonilla ",
         "id": "00031",
         "data": "98804221",
         "code": "1111111111"
     },
     {
-        "nome": "name example ",
+        "name": "name example ",
         "id": "00041",
         "data": "98804221",
         "code": "1111111111"
     },
     {
-        "nome": "no name idea ",
+        "name": "no name idea ",
         "id": "00051",
         "data": "98804221",
         "code": "1111111111"
     },
     {
-        "nome": "the last one ",
+        "name": "the last one ",
         "id": "00061",
         "data": "98804221",
         "code": "1111111111"
