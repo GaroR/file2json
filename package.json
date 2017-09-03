@@ -1,7 +1,7 @@
 {
   "name": "file2json",
   "version": "0.1.0-beta.0",
-  "description": "Biblioteca javascript criada para ler arquivos de texto genericos e converte-los para json",
+  "description": "A Simple javascript library to convert positional txt file to Json Object",
   "main": "src/file2json.js",
   "directories": {
     "example": "example"

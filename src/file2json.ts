@@ -1,30 +1,32 @@
 import Reader from "./lib/reader";
-import { translate } from "./lib/translate";
-import { promise } from "./objects/promise";
+import { translator } from "./lib/translate";
+import { IDictionary } from "./lib/types";
 
 class File2json {
     private callback: Function;
     constructor() {
     }
 
-    public convert(files: Array<File>, dictionary: any) {
+    public convert(files: Array<File>, dictionary: IDictionary) {
         let reader = new Reader();
-        if (files && files.length === 1) {
-            reader.readFile(files[0])
-                .then((retorno: string) => {
-                    var returnObject = promise;
-                    returnObject.registerListener(this.callback);
-                    returnObject.value = translate(retorno, dictionary);
-                });
-        } else {
-            throw "The File list must contain only one file";
-        }
-        return this;
-    }
-
-    public then(callback: Function) {
-        this.callback = callback;
-        return this;
+        return new Promise((resolve, reject) => {
+            try {
+                if (files && files.length === 1) {
+                    reader.readFile(files[0])
+                        .then((retorno: string) => {
+                            if (dictionary.lineTypes) {
+                                resolve(translator.translate(retorno, dictionary));
+                            } else {
+                                resolve(translator.simpleTranslate(retorno, dictionary))
+                            }
+                        });
+                } else {
+                    throw "The File list must contain only one file";
+                }
+            } catch (error) {
+                reject(error)
+            }
+        });
     }
 }
 

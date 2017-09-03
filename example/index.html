@@ -21,8 +21,79 @@
     fileToRead.addEventListener("change", convert, false);
 
     var dictionary = {
+        lineIndicator: "\n",
+        lineTypes: {
+            position: 0,
+            size: 1,
+            indicators: [
+                {
+                    type: "header",
+                    value: 0
+                },
+                {
+                    type: "body",
+                    value: 1
+                },
+                {
+                    type: "footer",
+                    value: 2
+                }
+            ]
+        },
+        lineDefinition: {
+            header: {
+                type: Object,
+                lineSize: 64,
+                definitions: [
+                    {
+                        name: "collectionName",
+                        position: 1,
+                        size: 20
+                    }
+                ]
+            },
+            body: {
+                type: Array,
+                lineSize: 64,
+                definitions: [
+                    {
+                        name: "name",
+                        position: 1,
+                        size: 39
+                    },
+                    {
+                        name: "id",
+                        position: 42,
+                        size: 5
+                    },
+                    {
+                        name: "date",
+                        position: 47,
+                        size: 8
+                    },
+                    {
+                        name: "code",
+                        position: 55,
+                        size: 11
+                    }
+                ]
+            },
+            footer: {
+                type: Object,
+                lineSize: 64,
+                definitions: [
+                    {
+                        name: "nrRows",
+                        position: 62,
+                        size: 3
+                    }
+                ]
+            }
+        }
+    };
+    var simpleDictionary = {
         lineSize: 64,
-        fields: [
+        lineDefinition: [
             {
                 name: "nome",
                 position: 0,
@@ -47,7 +118,7 @@
     };
 
     function convert(event) {
-        file2json.convert(event.target.files, dictionary)
+        file2json.convert(event.target.files, simpleDictionary)
             .then(function (returnValue) {
                 var convertedObject = document.getElementById("convertedObject");
                 convertedObject.innerText = JSON.stringify(returnValue);
